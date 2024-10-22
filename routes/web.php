@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/notification/send-email',[NotificationsController::class,'email'])->name('notifications.form.email');
-
+Route::post('/notification/send-email',[NotificationsController::class,'sendEmail'])->name('notification.send.email');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
