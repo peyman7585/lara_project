@@ -28,7 +28,7 @@
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{route('notifications.form.email')}}">ارسال ایمیل</a>
-                    <a class="dropdown-item" href="">ارسال پیام کوتاه</a>
+                    <a class="dropdown-item" href="{{route('notifications.form.sms')}}">ارسال پیام کوتاه</a>
                 </div>
             </li>
     </div>

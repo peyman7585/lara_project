@@ -1,11 +1,11 @@
 @extends('layouts.layout')
-@section('title','Send Email')
+@section('title','Send Sms')
 @section('content')
     <div class="row justify-content-md-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                @lang('notification.send_email')
+                @lang('notification.send_sms')
                 </div>
                 <div class="card-body">
 
@@ -19,28 +19,21 @@
                         </div>
                     @endif
 
-
-                    <form action="{{route('notifications.send.email')}}" method="post">
+                    <form action="{{route('notifications.send.sms')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="user">@lang('notification.users')</label>
                             <select name="user"  class="form-control" id="user">
                                 @foreach($users as $user)
-                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                    <option {{old('user') == $user->id ? 'selected' : ''}} value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
 
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="email_type">@lang('notification.email_type')</label>
-                            <select name="email_type" class="form-control" id="">
-                                @foreach($emailTypes as $key=>$type)
-                                    <option value="{{$key}}">{{$type}}</option>
-
-                                @endforeach
-
-                            </select>
+                            <label for="text">@lang('notification.text_sms')</label>
+                            <textarea name="text"  class="form-control" rows="5" >{{old('text')}}</textarea>
                         </div>
                         @if($errors->any())
                             <ul>

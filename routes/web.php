@@ -16,7 +16,13 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/notification/send-email',[NotificationsController::class,'email'])->name('notifications.form.email');
-Route::post('/notification/send-email',[NotificationsController::class,'sendEmail'])->name('notification.send.email');
+Route::post('/notification/send-email',[NotificationsController::class,'sendEmail'])->name('notifications.send.email');
+Route::get('/notification/send-sms',[NotificationsController::class,'sms'])->name('notifications.form.sms');
+Route::post('/notification/send-sms',[NotificationsController::class,'sendSms'])->name('notifications.send.sms');
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
